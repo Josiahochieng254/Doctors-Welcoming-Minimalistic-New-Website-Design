@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. V Health - Your Online Health Partner</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /* CSS styles for the telemedicine website */
+        :root {
+            /* Primary Blue Palette */
+            --primary-blue-darkest: #0054AA;
+            --primary-blue-dark: #0677BA;
+            --primary-blue-medium: #7BADD7;
+            --primary-blue-light: #CADEEF;
+            --primary-blue-lightest: #E8F1F8;
+
+            /* Accent Green Palette */
+            --accent-green-darkest: #00AB8E;
+            --accent-green-dark: #00BBA5;
+            --accent-green-medium: #67D7C9;
+            --accent-green-light: #C6EFE9;
+            --accent-green-lightest: #E9F9F6;
+
+            --white: #ffffff;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --border-light: #e0e0e0;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif; /* Sans Serif font */
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-blue-dark);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-blue-darkest);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-blue-dark);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 25px; /* Rounded corners */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 84, 170, 0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-blue-darkest);
+            transform: translateY(-2px);
+        }
+
+        .btn.btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue-dark);
+            border: 2px solid var(--primary-blue-dark);
+            box-shadow: none;
+        }
+
+        .btn.btn-outline:hover {
+            background-color: var(--primary-blue-lightest);
+            transform: translateY(-2px);
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--shadow-light);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px; /* Adjust as needed */
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin-left: 30px;
+        }
+
+        .navbar ul li a {
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            color: var(--primary-blue-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            /* Using the image as a background with a color overlay for readability */
+            background-image: linear-gradient(rgba(232, 241, 248, 0.4), rgba(232, 241, 248, 0.4)), url('Screenshot (55).png');
+            background-size: cover;
+            background-position: center center;
+            padding: 120px 0; /* Increased padding for better visual spacing */
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 50px; /* Rounded bottom corners */
+            border-bottom-right-radius: 50px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            color: var(--primary-blue-darkest);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.3em;
+            color: var(--text-dark); /* Changed for better contrast */
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Features Section (Services/How it works) */
+        .features-section {
+            padding: 80px 0;
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .features-section h2 {
+            font-size: 2.8em;
+            color: var(--primary-blue-darkest);
+            margin-bottom: 60px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 5px 20px var(--shadow-light);
+            padding: 30px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--primary-blue-light);
+            /* Added styles for image backgrounds */
+            background-size: cover;
+            background-position: center;
+            color: white; /* Text color for readability on image */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for readability */
+            min-height: 250px; /* Ensure cards have height to show background */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* Align content to the bottom */
+        }
+
+        .feature-card .icon,
+        .feature-card h3,
+        .feature-card p {
+            background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background for text */
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .feature-card .icon {
+            background: none; /* Remove background from icon specifically if needed */
+            text-shadow: none; /* Remove shadow from icon specifically */
+            color: var(--accent-green-light); /* Lighter color for icon on dark background */
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 84, 170, 0.1);
+        }
+
+        .feature-card .icon {
+            font-size: 3em;
+            color: var(--accent-green-dark);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.8em;
+            color: var(--white); /* Changed to white for readability on image */
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--white); /* Changed to white for readability on image */
+        }
+
+        /* Specific background images for feature cards */
+        .feature-card.easy-booking {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Screenshot (58).png');
+        }
+
+        .feature-card.virtual-consultations {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Screenshot (57).png');
+        }
+
+        .feature-card.prescriptions {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Screenshot (64).png');
+        }
+
+        .feature-card.personalized-care {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Screenshot (66).png');
+        }
+
+
+        /* About Us Section */
+        .about-section {
+            background-color: var(--primary-blue-lightest);
+            padding: 80px 0;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+        }
+
+        .about-section .container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-content {
+            flex: 1;
+            text-align: left;
+        }
+
+        .about-content h2 {
+            font-size: 2.8em;
+            color: var(--primary-blue-darkest);
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 1.1em;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 10px 30px var(--shadow-light);
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            background-color: var(--primary-blue-dark);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+        }
+
+        .cta-section h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .cta-section p {
+            font-size: 1.4em;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .btn {
+            background-color: var(--accent-green-dark);
+            box-shadow: 0 4px 15px rgba(0, 171, 142, 0.4);
+        }
+
+        .cta-section .btn:hover {
+            background-color: var(--accent-green-darkest);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-blue-darkest);
+            color: var(--white);
+            padding: 40px 0;
+            font-size: 0.9em;
+        }
+
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: var(--accent-green-medium);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--primary-blue-light);
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+
+        .social-media-links a {
+            color: var(--white);
+            font-size: 1.5em;
+            margin-right: 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-media-links a:hover {
+            color: var(--accent-green-medium);
+            transform: scale(1.1);
+        }
+
+        /* Subpage Specific Styles (Example - You'd expand these for a real subpage) */
+        .subpage-hero {
+            background-color: var(--primary-blue-dark);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+
+        .subpage-hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .subpage-content {
+            padding: 60px 0;
+        }
+
+        .subpage-content h2 {
+            font-size: 2.2em;
+            color: var(--primary-blue-darkest);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .subpage-content p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                margin-top: 20px;
+            }
+
+            .navbar ul li {
+                margin: 10px 0;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-content p {
+                font-size: 1.1em;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-section .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-content, .about-image {
+                flex: none;
+                width: 100%;
+            }
+
+            .about-image img {
+                margin-top: 30px;
+            }
+
+            .cta-section h2 {
+                font-size: 2.2em;
+            }
+
+            .cta-section p {
+                font-size: 1.1em;
+            }
+
+            .footer .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-col {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png.png" alt="Dr. V Health Logo">
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" class="btn">Get Started</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Your Health, Online. Simplified.</h1>
+                    <p>Connect with experienced healthcare professionals from the comfort of your home. Dr. V Health provides personalized and accessible telemedicine services for a healthier you.</p>
+                    <a href="#services" class="btn">Explore Services</a>
+                    <a href="#contact" class="btn btn-outline" style="margin-left: 15px;">Book an Appointment</a>
+                </div>
+                </div>
+        </section>
+
+        <section id="services" class="features-section">
+            <div class="container">
+                <h2>How Dr. V Health Works</h2>
+                <div class="feature-grid">
+                    <div class="feature-card easy-booking">
+                        <div class="icon">&#9993;</div> <h3>Easy Online Booking</h3>
+                        <p>Schedule your virtual consultation with a few clicks. Choose your preferred doctor and time slot.</p>
+                    </div>
+                    <div class="feature-card virtual-consultations">
+                        <div class="icon">&#128187;</div> <h3>Secure Virtual Consultations</h3>
+                        <p>Connect with doctors via secure video calls from any device. Discuss your concerns privately and comfortably.</p>
+                    </div>
+                    <div class="feature-card prescriptions">
+                        <div class="icon">&#128221;</div> <h3>Prescriptions & Referrals</h3>
+                        <p>Receive digital prescriptions, lab orders, or referrals directly to your pharmacy or specialist.</p>
+                    </div>
+                    <div class="feature-card personalized-care">
+                        <div class="icon">&#128100;</div> <h3>Personalized Care</h3>
+                        <p>Our healthcare professionals provide tailored advice and treatment plans specific to your needs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-image">
+                    <img src="Screenshot (56).png" alt="Doctors consulting">
+                </div>
+                <div class="about-content">
+                    <h2>About Dr. V Health</h2>
+                    <p>At Dr. V Health, we believe that quality healthcare should be accessible to everyone, everywhere. Our platform is designed to bring compassionate and expert medical care directly to you, eliminating geographical barriers and long wait times.</p>
+                    <p>We leverage cutting-edge technology to ensure your online consultations are secure, private, and effective. Our team of certified doctors and specialists are committed to providing personalized attention and comprehensive health solutions.</p>
+                    <a href="#" class="btn btn-outline">Learn More About Us</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="cta-section">
+            <div class="container">
+                <h2>Ready to Experience Convenient Healthcare?</h2>
+                <p>Join thousands who are prioritizing their health with Dr. V Health. Get started today and take the first step towards a healthier tomorrow.</p>
+                <a href="#contact-form-section" class="btn">Book Your First Consultation</a>
+            </div>
+        </section>
+
+        <section id="services-details-subpage" class="subpage-content" style="display:none;">
+            <div class="container">
+                <h2>Detailed Service Information (Example Subpage)</h2>
+                <p>This is where detailed information about a specific service would go. For instance, if you clicked on "Explore Services", this section could dynamically load or be a separate page altogether. It would contain more in-depth descriptions, FAQs, and pricing for each service offered.</p>
+                <p>You can add sections for different medical specialties, types of consultations (e.g., urgent care, chronic condition management), or specific programs.</p>
+                <h3>Our Specialties</h3>
+                <ul>
+                    <li>General Practice Online Consultations</li>
+                    <li>Mental Health Support & Therapy</li>
+                    <li>Dermatology Consultations</li>
+                    <li>Chronic Disease Management</li>
+                    <li>Prescription Refills</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact-form-section" class="features-section">
+            <div class="container">
+                <h2>Send Us a Message</h2>
+                <form class="feature-card" style="max-width: 600px; margin: 0 auto; text-align: left; padding: 40px;">
+                    <label for="name" style="display: block; margin-bottom: 8px; font-weight: bold;">Name:</label>
+                    <input type="text" id="name" name="name" style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid var(--border-light); border-radius: 8px; font-size: 1em;" required>
+
+                    <label for="email" style="display: block; margin-bottom: 8px; font-weight: bold;">Email:</label>
+                    <input type="email" id="email" name="email" style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid var(--border-light); border-radius: 8px; font-size: 1em;" required>
+
+                    <label for="phone" style="display: block; margin-bottom: 8px; font-weight: bold;">Phone (Optional):</label>
+                    <input type="tel" id="phone" name="phone" style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid var(--border-light); border-radius: 8px; font-size: 1em;">
+
+                    <label for="message" style="display: block; margin-bottom: 8px; font-weight: bold;">Your Message:</label>
+                    <textarea id="message" name="message" rows="6" style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid var(--border-light); border-radius: 8px; font-size: 1em; resize: vertical;" required></textarea>
+
+                    <button type="submit" class="btn" style="width: 100%; padding: 15px;">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-col">
+                <h4>Dr. V Health</h4>
+                <p>Your trusted partner for convenient and personalized online healthcare services.</p>
+                <div class="social-media-links" style="margin-top: 15px;">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#">How it Works</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Help Center</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <p>123 Telemedicine Way, Health City, HC 98765</p>
+                <p>Email: info@drvhealth.com</p>
+                <p>Phone: +1 (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Dr. V Health. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for the telemedicine website
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        // For subpage content, you might want to show it
+                        if (targetId === '#services-details-subpage') {
+                            document.getElementById('services-details-subpage').style.display = 'block';
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                            // Hide subpage content if navigating to a main section
+                            document.getElementById('services-details-subpage').style.display = 'none';
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+
+            // Basic form submission handling (client-side only for this example)
+            const contactForm = document.querySelector('#contact-form-section .feature-card');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for contacting Dr. V Health! We will get back to you shortly.');
+                    contactForm.reset(); // Clear the form
+                    // In a real application, you would send this data to a backend server using fetch() or XMLHttpRequest
+                });
+            }
+
+            // You can add more interactive JS here, e.g.,
+            // - Testimonial carousels (if you add a testimonials section)
+            // - Animations on scroll (using Intersection Observer API)
+            // - Dynamic content loading for subpages (e.g., AJAX)
+            // - Mobile menu toggle (if you implement a hamburger menu for smaller screens)
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40jRwWldqcIDpfK+yU5tqQz6jWfQo0XyA9fQhP5F+K5S7WfFwXJ0tN9f2+F6A9uM6p5f5P5F5A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</body>
+</html>
